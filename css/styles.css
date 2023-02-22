@@ -39,22 +39,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 15vw;
+    left: 5vw;
     top: 5vh;
     width: 40px;
     height: 40px;
     cursor: pointer;
     transition: all .5s ease-in-out;
+    z-index: 10000;
 }
 
 .menu-btn_burger {
     width: 30px;
     height: 3px;
-    left: 15vw;
+    left: 5vw;
     background: black;
     border-radius: 5px;
     transition: all .5s ease-in-out;
-    z-index: 101;
+    z-index: 10000;
     cursor: pointer;
 }
 
@@ -66,26 +67,31 @@ body {
     background: black;
     border-radius: 5px;
     transition: all .5s ease-in-out;
-    z-index: 101;
+    z-index: 10000;
 }
 
 .menu-btn_burger::after {
     transform: translateY(10px);
+    z-index: 10000;
 }
 .menu-btn_burger::before {
     transform: translateY(-10px);
+    z-index: 10000;
 }
 /* ANIMATION */
 .menu-btn.open .menu-btn_burger {
     transform: translateX(-50px);
     background: transparent;
     box-shadow: none;
+    z-index: 10000;
 }
 .menu-btn.open .menu-btn_burger::before {
     transform: rotate(45deg) translate(35px, -35px);
+    z-index: 10000;
 }
 .menu-btn.open .menu-btn_burger::after{
     transform: rotate(-45deg) translate(35px, 35px);
+    z-index: 10000;
 }
 /* END OF HAMBURGER */
 
@@ -93,32 +99,34 @@ body {
 .overlay {
     background-color: whitesmoke;
     border-right: 5px solid black;
-    width: 12vw;
+    width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: -100vw;
-    z-index: 100;
-    transition: all .75s .7s;
+    transition: all .6s .6s;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    z-index: 1000;
 }
 
 .overlay.active {
+    background-color: whitesmoke;
     left: 0vw;
-    transition: all .5s;
+    transition: all .4s;
+    z-index: 1000;
 }
 
 .overlay.active .nav-bar ul li {
     left: 0;
     opacity: 1;
-    transition: all .8s;
-    transition-delay: .6s;
+    transition: all .7s;
+    transition-delay: .5s;
 }
 
 .nav-bar {
-    padding-left: 15vw;
+    padding-left: 5vw;
 }
 
 .nav-bar ul li {
@@ -126,7 +134,7 @@ body {
     top: 0;
     left: -50px;
     opacity: 0;
-    transition: all .8s;
+    transition: all .7s;
 }
 
 .nav-bar ul li a {
@@ -137,7 +145,7 @@ body {
     display: block;
     padding-bottom: 2rem;
     opacity: 1;
-    transition: all .5s;
+    transition: all .4s;
 }
 
 .nav-bar ul li a:hover {
@@ -146,6 +154,19 @@ body {
 }
 /* Nav Menu END */
 
+.bodyText {
+    display: flex;
+}
+
+.headingText {
+    text-align: right;
+    position: fixed;
+    left: 80vw;
+    top: 33vh;
+    font-size: 1.3vw;
+    display: none;
+}
+
 /* Projects START */
 .project-track {
     display: flex;
@@ -153,12 +174,12 @@ body {
     gap: 4vmin;
     position: absolute;
     top: 10%;
-    left: 28%
+    left: 20vw;
 }
 
 .project-track .image {
-    width: 85vmin;
-    height: 56vmin;
+    width: 50vw;
+    height: 56vh;
     object-fit: cover;
     object-position: 100% 0%;
     filter: brightness(100%);
@@ -172,23 +193,12 @@ body {
 }
 /* Project END */
 
-.bodyText {
-    display: flex;
-}
-
-.headingText {
-    text-align: right;
-    position: fixed;
-    right: 15vw;
-    top: 33vh;
-}
-
 /* ABOUT PAGE */
 /* about body START */
 .aboutText {
     margin-left: 28vw;
     margin-top: 15vh;
-    width: 85vmin;
+    width: 45vw;
 }
 .aboutText h1 {
     font-size: 3.5rem;
@@ -329,3 +339,57 @@ textarea {
 .comingSoon h2 {
     font-size: 2.5rem;
 }
+
+@media (min-width: 700px) {
+
+    .headingText {
+        display: block;
+    }
+
+}
+/* end of tablet */
+
+@media (min-width: 1000px) {
+/* nav bar */
+    .overlay {
+        width: 12vw;
+        height: 100vh;
+        top: 0;
+        left: -100vw;
+    }
+    .overlay.active {
+        left: 0vw;
+    } 
+    .overlay.active .nav-bar ul li {
+        left: 0;
+    }
+    
+    .nav-bar {
+        padding-left: 15vw;
+    }
+
+    .headingText {
+        left: 75vw;
+        font-size: 1vw;
+    }
+
+    .menu-btn {
+        left: 15vw;
+    }
+
+    .project-track {
+        left: 28vw;
+    }
+    .project-track .image {
+        width: 45vw;
+        height: 56vh;
+    }
+
+}
+/* end of laptop */
+
+@media (min-width: 1200px) {
+
+
+}
+/* end of desktop */
