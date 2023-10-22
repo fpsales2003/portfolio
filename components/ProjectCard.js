@@ -1,17 +1,15 @@
-const ProjectCard = ({ title, organization, date }) => {
+import Image from "next/image"
+
+const ProjectCard = ({ img, altText }) => {
     return (
-        <div className="">
-            <div className="">
-                <div>
-                    {title}
-                </div>
-                <div>
-                    {organization}
-                </div>
-                <div>
-                    {date}
-                </div>
-            </div>
+        <div>
+            <Image 
+                src={`/${img}.png`}
+                alt={altText}
+                width={1000}
+                height={400}
+                className="rounded-lg w-[50vw] h-auto"
+            />
         </div>
     )
 }

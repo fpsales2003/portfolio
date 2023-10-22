@@ -7,8 +7,6 @@ export default function IntroText() {
         "Hi there I'm Francis Sales",
         "I'm a Junior at Syracuse University",
         "Studying Information Management",
-        "This website is currently under construction",
-        "Please refer to my LinkedIn @francis-sales"
     ];
 
     const baseText = useTransform(textIndex, (latest) => texts[latest] || "")
