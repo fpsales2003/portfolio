@@ -1,10 +1,10 @@
 import ProjectCard from "@/components/ProjectCard"
 import Image from "next/image";
+import Link from "next/link";
 
 import { getProjects } from "@/constants"
 import { motion, useAnimation } from "framer-motion";
 import { useState } from "react";
-import { getNamedRouteRegex } from "next/dist/shared/lib/router/utils/route-regex";
 
 const Slideshow = ({ }) => {
 
@@ -51,7 +51,7 @@ const Slideshow = ({ }) => {
         hidden: { 
             opacity: 0 ,
             transition: {
-                delay: 0.65
+                delay: 0.9
             }
         },
         visible: { 
@@ -63,12 +63,15 @@ const Slideshow = ({ }) => {
     const descTextVariants = {
         hidden: {
             opacity: 0,
+            y: -20,
             transition: {
-                delay: 0.2
+                delay: 0.5,
+                duration: 0.3
             }
         },
         visible: {
             opacity: 1,
+            y: 0,
             transition: {
                 delay: 0.4,
                 duration: 0.5
@@ -78,12 +81,39 @@ const Slideshow = ({ }) => {
 
     const slideVariants = {
         hidden: {
-            x: "100%",
-            display: "none"
+            opacity: 0,
+            display: "none",
+            x: 1000,
+            transition: {
+                duration: 0.5
+            }
         },
         visible: {
+            opacity: 1,
+            display: "block",
             x: 0,
-            display: "block"
+            transition: {
+                duration: 0.5
+            }
+        }
+    }
+
+    const linkVariants ={
+        hidden: {
+            opacity: 0,
+            y: -20,
+            transition: {
+                delay: 0.5,
+                duration: 0.3
+            }
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: 0.4,
+                duration: 0.5
+            }
         }
     }
 
@@ -100,7 +130,7 @@ const Slideshow = ({ }) => {
                     />
                 </button>
                 {projects.map((project, index) => {
-                        const {img, alt, title, date, description, skills} = project;
+                        const {img, alt, title, date, description, git, link, demo, skills} = project;
                         return (
                         <motion.div
                             key={index}
@@ -110,7 +140,7 @@ const Slideshow = ({ }) => {
                             variants={slideVariants}
                         >
                             <motion.div 
-                                className="z-50 absolute bottom-4 right-4"
+                                className="z-20 absolute bottom-4 right-4 cursor-pointer"
                                 initial="initial"
                                 animate={controls}
                                 variants={rotateVariants}
@@ -125,7 +155,7 @@ const Slideshow = ({ }) => {
                                 />
                             </motion.div>
                             <motion.div 
-                                className="absolute bg-black w-full h-full text-white font-playfair rounded-lg flex justify-center items-center z-10"
+                                className="absolute bg-black w-full h-full text-white font-playfair rounded-lg flex justify-center items-center"
                                 initial={"hidden"}
                                 animate={isRotated ? "visible" : "hidden" }
                                 variants={descVariants}
@@ -137,18 +167,54 @@ const Slideshow = ({ }) => {
                                     variants={descTextVariants}
                                 >
                                     <div
-                                        className="flex flex-col justify-center items-center gap-20"
+                                        className="flex flex-col items-center"
                                     >
-                                        <div className="text-4xl italic">
-                                            <h2>
-                                                {title}
-                                            </h2>
+                                            <div className="text-4xl italic self-start">
+                                                <h2>
+                                                    {title}
+                                                </h2>
+                                            </div>
+                                            <div className="self-start">
+                                                {date}
+                                            </div>
+                                        <div>
+                                            {description}
                                         </div>
-                                        <div>{date}</div>
-                                        <div>{description}</div>
                                     </div>
-                                    {/* <div>{skills}</div> */}
+                                    <div>
+                                        {skills}
+                                    </div>
                                 </motion.div>
+                                <motion.div
+                                            className="flex items-center flex-start gap-5 z-20 absolute bottom-4 left-4"
+                                            initial="hidden"
+                                            animate={isRotated ? "visible" : "hidden"}
+                                            variants={linkVariants}
+                                        >
+                                            <Link
+                                                href={link ? link : demo}
+                                                prefetch={true}
+                                                target="_blank"
+                                            >
+                                                <div className="bg-white text-black italic p-2 rounded-xl">
+                                                    {`${link ? "live site" : "live demo"}`}
+                                                </div>
+                                            </Link>
+                                            <Link
+                                                href={git}
+                                                prefetch={true}
+                                                target="_blank"
+                                            >
+                                                <div className="bg-white rounded-full">
+                                                    <Image 
+                                                        src="/github.svg"
+                                                        alt="github link"
+                                                        width={50}
+                                                        height={50}
+                                                    />
+                                                </div>
+                                            </Link>
+                                        </motion.div>
                             </motion.div>
                             <ProjectCard
                                 key={index}

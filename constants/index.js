@@ -7,6 +7,9 @@ const projects = [
         date: "Feb 2023 - May 2023",
         img: "subaru_cover",
         altText: "Subaru",
+        demo: "https://ist-363-spring2023-subaru-fa2ztbmog-fpsales2003.vercel.app/vehicles",
+        git: "https://github.com/fpsales2003/IST363-Spring2023-Subaru",
+        link: "",
         skills: [
             "JavaScript",
             "SASS",
@@ -23,6 +26,9 @@ const projects = [
         date: "Jul 2021 - Aug 2021",
         img: "avon_cover",
         altText: "Avon",
+        demo: "",
+        git: "",
+        link: "https://www.avonmarketplace.com/",
         skills: [
             "SquareSpace",
             "CSS",
@@ -37,6 +43,9 @@ const projects = [
         date: "Feb 2023 - May 2023",
         img: "workout_cover",
         altText: "Web Dev",
+        demo: "",
+        git: "https://github.com/fpsales2003/ist263/tree/main/project7",
+        link: "",
         skills: [
             "HTML",
             "CSS"

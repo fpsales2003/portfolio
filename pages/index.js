@@ -1,6 +1,8 @@
 import Slideshow from "@/components/Slideshow";
 import CursorBlinker from "@/components/CursorBlinker";
 import IntroText from "@/components/IntroText";
+import Contact from "@/components/Contact";
+import FindMe from "@/components/FindMe";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -24,16 +26,15 @@ const Home = () => {
 
     return <section>
         <div className="bg-black">
-            <div className="h-[115vh]">
                 <div 
                 ref={targetRef}
-                className="h-screen flex justify-center items-center bg-black">
+                className="flex justify-center items-center bg-black h-[100vh] mb-[15vh]">
                     <motion.div 
                         style={{ scale }}
                         className="bg-white fixed left-50 top-50 h-[50vh] w-[50vw] rounded-lg"
                     ></motion.div>
                     <motion.div 
-                        className="z-10 w-[450px] fixed"
+                        className="z-9 w-[450px] fixed"
                         style= {{ opacity }}
                     >
                         <motion.span
@@ -47,13 +48,15 @@ const Home = () => {
                 <div className="flex flex-col justify-center items-center relative">
                     <h1
                         className="text-black z-11 font-playfair italic text-6xl mb-[10rem] w-[25rem]"
-                    >Check out some of my projects</h1>
+                    >
+                        Check out some of my projects
+                    </h1>
                         <Slideshow />
                 </div>
-            </div>
         </div>
-        <div className="h-[100vh] bg-white">
-            <div></div>
+        <div className="flex justify-around items-center w-full h-[10vh] mt-[15vh] mb-[5vh]">
+            <Contact />
+            <FindMe />
         </div>
     </section>
 };

@@ -7,6 +7,9 @@ export default function IntroText() {
         "Hi there I'm Francis Sales",
         "I'm a Junior at Syracuse University",
         "Studying Information Management",
+        "I have concentrations in Data Analyitics and Web Development",
+        "and a minor in Computer Science",
+        "Scroll to learn more"
     ];
 
     const baseText = useTransform(textIndex, (latest) => texts[latest] || "")
@@ -23,7 +26,7 @@ export default function IntroText() {
             delay: 0.2,
             repeat: Infinity,
             repeatType: "reverse",
-            repeatDelay: 1, // make on scroll
+            repeatDelay: 1,
             onUpdate(latest) {
                 if (updatedThisRound.get() === true && latest > 0) {
                     updatedThisRound.set(false);
