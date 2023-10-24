@@ -20,7 +20,6 @@ export default function CursorBlinker() {
             animate="blinking"
             className="inline-block h-10 w-[1.5px] translate-y-1 bg-slate-900"
         >
-
         </motion.div>
     )
 }

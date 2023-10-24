@@ -43,7 +43,7 @@ const projects = [
         date: "Feb 2023 - May 2023",
         img: "workout_cover",
         altText: "Web Dev",
-        demo: "",
+        demo: "https://fpsales2003.github.io/ist263/project7/index.html",
         git: "https://github.com/fpsales2003/ist263/tree/main/project7",
         link: "",
         skills: [
@@ -55,4 +55,29 @@ const projects = [
 
 export function getProjects() {
     return projects;
+}
+
+const socials = [
+    {
+        name: "linkedin",
+        link: "https://www.linkedin.com/in/francis-sales/",
+        img: "linkedin",
+        alt: "Link to my LinkedIn"
+    },
+    {
+        name: "github",
+        link: "https://github.com/fpsales2003",
+        img: "square-github",
+        alt: "Link to my github"
+    },
+    {
+        name: "instagram",
+        link: "https://www.instagram.com/francis._.sales/",
+        img: "square-instagram",
+        alt: "Link to my Instagram"
+    },
+]
+
+export function getSocials() {
+    return socials;
 }

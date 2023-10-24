@@ -4,12 +4,11 @@ import { useEffect } from "react";
 export default function IntroText() {
     const textIndex = useMotionValue(0);
     const texts = [
-        "Hi there I'm Francis Sales",
+        "Hi there. I'm Francis Sales",
         "I'm a Junior at Syracuse University",
-        "Studying Information Management",
+        "Studying Information Management & Technology",
         "I have concentrations in Data Analyitics and Web Development",
-        "and a minor in Computer Science",
-        "Scroll to learn more"
+        "and a minor in Computer Science"
     ];
 
     const baseText = useTransform(textIndex, (latest) => texts[latest] || "")
@@ -41,5 +40,9 @@ export default function IntroText() {
             }
         })
     })
-    return <motion.span className="inline">{displayText}</motion.span>
+    return (
+        <motion.span className="inline text-black z-10 font-playfair italic text-3xl sm:text-5xl md:text-6xl">
+            {displayText}
+        </motion.span>
+    )
 }

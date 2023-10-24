@@ -3,10 +3,12 @@ import CursorBlinker from "@/components/CursorBlinker";
 import IntroText from "@/components/IntroText";
 import Contact from "@/components/Contact";
 import FindMe from "@/components/FindMe";
+import Footer from "@/components/Footer";
+import Image from "next/image";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
-import { motion, useAnimationFrame, useInView, useMotionValue, useScroll, useSpring, useTransform, useVelocity, wrap } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Home = () => {
 
@@ -19,11 +21,6 @@ const Home = () => {
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 5]);
     const opacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
-    const slideVariants = {
-        hidden: { x: "100%", opacity: 0 },
-        show: { x: 0, opacity: 1, transition: {duration: 1} }
-    }
-
     return <section>
         <div className="bg-black">
                 <div 
@@ -33,31 +30,39 @@ const Home = () => {
                         style={{ scale }}
                         className="bg-white fixed left-50 top-50 h-[50vh] w-[50vw] rounded-lg"
                     ></motion.div>
+                    <motion.div
+                        style={{ opacity }}
+                        className="fixed top-[85vh] bg-white rounded-full border-[1px] border-white"
+                    >
+                        <Image 
+                            src="/down-arrow.svg"
+                            alt="arrow down"
+                            width={50}
+                            height={50}
+                        />
+                    </motion.div>
                     <motion.div 
-                        className="z-9 w-[450px] fixed"
+                        className="z-9 w-[45vw] fixed"
                         style= {{ opacity }}
                     >
-                        <motion.span
-                            className="text-black z-10 font-playfair italic text-6xl"
-                        >
-                            <IntroText />
-                        </motion.span>
+                        <IntroText />
                         <CursorBlinker />
                     </motion.div>
                 </div>
                 <div className="flex flex-col justify-center items-center relative">
                     <h1
-                        className="text-black z-11 font-playfair italic text-6xl mb-[10rem] w-[25rem]"
+                        className="text-black z-11 font-playfair italic mb-[10rem] w-[50vw] md:w-[25rem] text-4xl md:text-6xl"
                     >
                         Check out some of my projects
                     </h1>
                         <Slideshow />
                 </div>
         </div>
-        <div className="flex justify-around items-center w-full h-[10vh] mt-[15vh] mb-[5vh]">
+        <div className="flex justify-around items-center w-full h-[10vh] mt-[15vh] mb-[7vh]">
             <Contact />
             <FindMe />
         </div>
+        <Footer />
     </section>
 };
 

@@ -1,12 +1,11 @@
 import ProjectCard from "@/components/ProjectCard"
 import Image from "next/image";
-import Link from "next/link";
 
 import { getProjects } from "@/constants"
 import { motion, useAnimation } from "framer-motion";
 import { useState } from "react";
 
-const Slideshow = ({ }) => {
+const Slideshow = () => {
 
     const projects = getProjects();
 
@@ -79,8 +78,26 @@ const Slideshow = ({ }) => {
         }
     }
 
-    const slideVariants = {
-        hidden: {
+    const enterVariants = {
+        initial: {
+            opacity: 0,
+            display: "none",
+            x: -1000,
+            transition: {
+                duration: 0.5
+            }
+        },
+        visible: {
+            opacity: 1,
+            display: "block",
+            x: 0,
+            transition: {
+                duration: 0.5
+            }
+        }
+    }
+    const exitVariants = {
+        initial: {
             opacity: 0,
             display: "none",
             x: 1000,
@@ -131,16 +148,17 @@ const Slideshow = ({ }) => {
                 </button>
                 {projects.map((project, index) => {
                         const {img, alt, title, date, description, git, link, demo, skills} = project;
+                        const isCurrentSlide = index === currentSlide;
                         return (
                         <motion.div
                             key={index}
                             className="relative"
-                            initial="hidden"
-                            animate={index === currentSlide ? "visible" : "hidden"}
-                            variants={slideVariants}
+                            initial="initial"
+                            animate={isCurrentSlide ? "visible" : (currentSlide < index ? "exit" : "enter")}
+                            variants={isCurrentSlide ? enterVariants : (currentSlide < index ? exitVariants : enterVariants)}
                         >
                             <motion.div 
-                                className="z-20 absolute bottom-4 right-4 cursor-pointer"
+                                className="z-20 absolute bottom-4 right-4 cursor-pointer border-[1px] rounded-full border-white"
                                 initial="initial"
                                 animate={controls}
                                 variants={rotateVariants}
@@ -174,15 +192,22 @@ const Slideshow = ({ }) => {
                                                     {title}
                                                 </h2>
                                             </div>
-                                            <div className="self-start">
+                                            <div className="self-start mb-10 hidden md:block">
                                                 {date}
                                             </div>
-                                        <div>
+                                        <div className="hidden md:block">
                                             {description}
                                         </div>
                                     </div>
                                     <div>
-                                        {skills}
+                                        <p className="italic text-2xl">Skills Used:</p>
+                                        {skills.map((skill, skillIndex) => {
+                                            return (
+                                                <div key={skillIndex}>
+                                                    {skill}
+                                                </div>
+                                            )
+                                        })}
                                     </div>
                                 </motion.div>
                                 <motion.div
@@ -191,29 +216,35 @@ const Slideshow = ({ }) => {
                                             animate={isRotated ? "visible" : "hidden"}
                                             variants={linkVariants}
                                         >
-                                            <Link
+                                            <a
                                                 href={link ? link : demo}
                                                 prefetch={true}
                                                 target="_blank"
                                             >
-                                                <div className="bg-white text-black italic p-2 rounded-xl">
+                                                <motion.div 
+                                                    className="bg-white text-black italic p-2 rounded-xl"
+                                                    whileHover={{ scale: 1.1 }}
+                                                >
                                                     {`${link ? "live site" : "live demo"}`}
-                                                </div>
-                                            </Link>
-                                            <Link
+                                                </motion.div>
+                                            </a>
+                                            <a
                                                 href={git}
                                                 prefetch={true}
                                                 target="_blank"
                                             >
-                                                <div className="bg-white rounded-full">
+                                                <motion.div 
+                                                    whileHover={{ scale: 1.1 }}
+                                                    className="bg-white rounded-full border-[1px] border-white"
+                                                >
                                                     <Image 
                                                         src="/github.svg"
                                                         alt="github link"
                                                         width={50}
                                                         height={50}
                                                     />
-                                                </div>
-                                            </Link>
+                                                </motion.div>
+                                            </a>
                                         </motion.div>
                             </motion.div>
                             <ProjectCard
