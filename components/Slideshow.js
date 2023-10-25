@@ -136,7 +136,7 @@ const Slideshow = () => {
 
     return (
             <motion.div 
-                className="flex justify-center items-center overflow-hidden relative gap-5"
+                className="flex justify-center items-center overflow-hidden relative sm:gap-5 gap-1 w-[100vw] h-auto"
             >
                 <button onClick={previousSlide}>
                     <Image 
@@ -147,7 +147,7 @@ const Slideshow = () => {
                     />
                 </button>
                 {projects.map((project, index) => {
-                        const {img, alt, title, date, description, git, link, demo, skills} = project;
+                        const {img, alt, title, date, description, git, link, demo, skills, organization} = project;
                         const isCurrentSlide = index === currentSlide;
                         return (
                         <motion.div
@@ -179,7 +179,7 @@ const Slideshow = () => {
                                 variants={descVariants}
                             >
                                 <motion.div
-                                    className="flex justify-center items-center gap-10 m-20"
+                                    className="flex justify-center items-center gap-10 sm:m-20 m-5"
                                     initial="hidden"
                                     animate={isRotated ? "visible" : "hidden"}
                                     variants={descTextVariants}
@@ -187,19 +187,22 @@ const Slideshow = () => {
                                     <div
                                         className="flex flex-col items-center"
                                     >
-                                            <div className="text-4xl italic self-start">
-                                                <h2>
-                                                    {title}
-                                                </h2>
-                                            </div>
-                                            <div className="self-start mb-10 hidden md:block">
-                                                {date}
-                                            </div>
-                                        <div className="hidden md:block">
+                                        <div className="sm:text-3xl text-xl italic self-start">
+                                            <h2>
+                                                {title}
+                                            </h2>
+                                        </div>
+                                        <div className="self-start lg:mb-5 mb-3 hidden md:block">
+                                            {date}
+                                        </div>
+                                        <div className="sm:text-lg md:text-md text-xs hidden sm:block">
                                             {description}
                                         </div>
+                                        <div className="block sm:hidden">
+                                            {organization}
+                                        </div>
                                     </div>
-                                    <div>
+                                    <div className="hidden lg:block">
                                         <p className="italic text-2xl">Skills Used:</p>
                                         {skills.map((skill, skillIndex) => {
                                             return (
@@ -218,7 +221,7 @@ const Slideshow = () => {
                                         >
                                             <a
                                                 href={link ? link : demo}
-                                                prefetch={true}
+                                                prefetch="true"
                                                 target="_blank"
                                             >
                                                 <motion.div 
@@ -230,7 +233,7 @@ const Slideshow = () => {
                                             </a>
                                             <a
                                                 href={git}
-                                                prefetch={true}
+                                                prefetch="true"
                                                 target="_blank"
                                             >
                                                 <motion.div 
@@ -247,11 +250,11 @@ const Slideshow = () => {
                                             </a>
                                         </motion.div>
                             </motion.div>
-                            <ProjectCard
-                                key={index}
-                                img={img}
-                                alt={alt}
-                            />
+                                <ProjectCard
+                                    key={index}
+                                    img={img}
+                                    alt={alt}
+                                />
                         </motion.div>
                     )})}
                     <button onClick={nextSlide}>

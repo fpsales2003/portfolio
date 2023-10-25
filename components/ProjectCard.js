@@ -6,9 +6,9 @@ const ProjectCard = ({ img, altText }) => {
             <Image 
                 src={`/${img}.png`}
                 alt={altText}
-                width={1000}
-                height={400}
-                className="rounded-lg w-[50vw] h-full"
+                width={800}
+                height={600}
+                className="rounded-lg md:w-[70vw] lg:w-[60vw] xl:w-[50vw] w-[90vw] h-auto"
             />
         </div>
     )

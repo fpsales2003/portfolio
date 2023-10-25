@@ -5,6 +5,7 @@ import Contact from "@/components/Contact";
 import FindMe from "@/components/FindMe";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 
 import { useRef } from "react";
 
@@ -34,12 +35,16 @@ const Home = () => {
                         style={{ opacity }}
                         className="fixed top-[85vh] bg-white rounded-full border-[1px] border-white"
                     >
-                        <Image 
-                            src="/down-arrow.svg"
-                            alt="arrow down"
-                            width={50}
-                            height={50}
-                        />
+                        <Link
+                            href="#projects"    
+                        >
+                            <Image 
+                                src="/down-arrow.svg"
+                                alt="arrow down"
+                                width={50}
+                                height={50}
+                            />
+                        </Link>
                     </motion.div>
                     <motion.div 
                         className="z-9 w-[45vw] fixed"
@@ -49,13 +54,13 @@ const Home = () => {
                         <CursorBlinker />
                     </motion.div>
                 </div>
-                <div className="flex flex-col justify-center items-center relative">
+                <div className="w-[100vw] flex flex-col justify-center items-center relative" id="projects">
                     <h1
-                        className="text-black z-11 font-playfair italic mb-[10rem] w-[50vw] md:w-[25rem] text-4xl md:text-6xl"
+                        className="text-black z-11 font-playfair italic w-[50vw] h-auto md:w-[25rem] text-4xl md:text-6xl md:mb-[10rem] mb-[5rem]"
                     >
                         Check out some of my projects
                     </h1>
-                        <Slideshow />
+                    <Slideshow />
                 </div>
         </div>
         <div className="flex justify-around items-center w-full h-[10vh] mt-[15vh] mb-[7vh]">

@@ -3,7 +3,7 @@ const projects = [
         title: "Subaru Clone",
         organization: "Syracuse University",
         class: "Advanced Front End Developement",
-        description: "Class final project. A partial recreation of Subaru's website.",
+        description: "The final project for Advanced Front End Web Developments. This project consisted of a partial recreation of Subaru's official website. This project focused on content management, interactivity, and re-usability.",
         date: "Feb 2023 - May 2023",
         img: "subaru_cover",
         altText: "Subaru",
@@ -15,14 +15,15 @@ const projects = [
             "SASS",
             "Next.js",
             "React.js",
-            "Wordpress"
+            "Wordpress",
+            "API's"
         ]
     },
     {
         title: "Avon Marketplace Rehaul",
         organization: "David Adam Realty, Inc.",
         class: "",
-        description: "An update of the Avon Marketplace website. Added new stores, removed closed stores, redesigned photo reel, added new contact info for store managers.",
+        description: "An update of the Avon Marketplace website for David Adam Realty, Inc. This redesign project included the addition of new stores, removal of closed stores, an overhaul of the photo reel, and updated contact info for clients and store managers.",
         date: "Jul 2021 - Aug 2021",
         img: "avon_cover",
         altText: "Avon",
@@ -39,7 +40,7 @@ const projects = [
         title: "Intro to Web Dev Final",
         organization: "Syracuse University",
         class: "Intro to Front End Developement",
-        description: "A workout focused website including an interactive home page. Meant to target beginner lifters looking for info on intro exercises.",
+        description: "The final project for Intro to Web Development. This was my first Web Development project. It includes an interactive home page, embedded videos, and a responsive layout.",
         date: "Feb 2023 - May 2023",
         img: "workout_cover",
         altText: "Web Dev",
