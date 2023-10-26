@@ -1,6 +1,7 @@
 import ProjectCard from "@/components/ProjectCard"
 import Image from "next/image";
 
+import React from "react";
 import { getProjects } from "@/constants"
 import { motion, useAnimation } from "framer-motion";
 import { useState } from "react";
@@ -78,43 +79,6 @@ const Slideshow = () => {
         }
     }
 
-    const enterVariants = {
-        initial: {
-            opacity: 0,
-            display: "none",
-            x: -1000,
-            transition: {
-                duration: 0.5
-            }
-        },
-        visible: {
-            opacity: 1,
-            display: "block",
-            x: 0,
-            transition: {
-                duration: 0.5
-            }
-        }
-    }
-    const exitVariants = {
-        initial: {
-            opacity: 0,
-            display: "none",
-            x: 1000,
-            transition: {
-                duration: 0.5
-            }
-        },
-        visible: {
-            opacity: 1,
-            display: "block",
-            x: 0,
-            transition: {
-                duration: 0.5
-            }
-        }
-    }
-
     const linkVariants ={
         hidden: {
             opacity: 0,
@@ -148,14 +112,35 @@ const Slideshow = () => {
                 </button>
                 {projects.map((project, index) => {
                         const {img, alt, title, date, description, git, link, demo, skills, organization} = project;
+
                         const isCurrentSlide = index === currentSlide;
+
+                        const isNextSlide = (index === currentSlide + 1) % projects.length;
+                        const isPreviousSlide = (index === currentSlide -1) % projects.length;
+
+                        const slideVariants = {
+                            hidden: {
+                                opacity: 0,
+                                x: isNextSlide ? -500 : isPreviousSlide ? 500 : 0,
+                                display: "none"
+                            },
+                            visible: {
+                                opacity: 1,
+                                x: 0,
+                                display: "block",
+                                transition: {
+                                    delay: isCurrentSlide ? 0 : 0.4,
+                                    duration: 0.5
+                                }
+                            }
+                        }
                         return (
                         <motion.div
                             key={index}
                             className="relative"
                             initial="initial"
-                            animate={isCurrentSlide ? "visible" : (currentSlide < index ? "exit" : "enter")}
-                            variants={isCurrentSlide ? enterVariants : (currentSlide < index ? exitVariants : enterVariants)}
+                            animate={isCurrentSlide ? "visible" : "hidden"}
+                            variants={slideVariants}
                         >
                             <motion.div 
                                 className="z-20 absolute bottom-4 right-4 cursor-pointer border-[1px] rounded-full border-white"
