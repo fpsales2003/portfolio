@@ -4,11 +4,10 @@ import { useEffect } from "react";
 export default function IntroText() {
     const textIndex = useMotionValue(0);
     const texts = [
-        "Hi there. I'm Francis Sales",
-        "I'm a Junior at Syracuse University",
-        "Studying Information Management & Technology",
-        "I have concentrations in Data Analyitics and Web Development",
-        "and a minor in Computer Science"
+        "Hi there. My name is Francis Sales.",
+        "I'm a Junior at Syracuse University.",
+        "Studying Information Management & Technology.",
+        "I have concentrations in Data Analytics, Web Development, and Retail Strategy",
     ];
 
     const baseText = useTransform(textIndex, (latest) => texts[latest] || "")
