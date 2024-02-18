@@ -1,5 +1,23 @@
 const projects = [
     {
+        title: "Boost Your Guys",
+        organization: "BYG",
+        class: "",
+        description: "The official website of Boost Your Guys, a student art collective.",
+        date: "Sep 2023 - Feb 2024",
+        img: "byg_cover",
+        altText: "Boost Your Guys",
+        demo: "",
+        git: "https://github.com/fpsales2003/byg",
+        link: "https://www.boostyourguys.com/",
+        skills: [
+            "JavaScript",
+            "Tailwind",
+            "React",
+            "Next.js"
+        ] 
+    },
+    {
         title: "Subaru Clone",
         organization: "Syracuse University",
         class: "Advanced Front End Developement",
@@ -51,7 +69,7 @@ const projects = [
             "HTML",
             "CSS"
         ]
-    }
+    },
 ]
 
 export function getProjects() {
