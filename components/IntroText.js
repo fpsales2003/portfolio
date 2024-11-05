@@ -6,7 +6,7 @@ export default function IntroText() {
     const texts = [
         "Hi there!",
         "My name is Francis Sales.",
-        "I'm a Junior at Syracuse University.",
+        "I'm a Senior at Syracuse University.",
         "Studying Information Management & Technology.",
         "I have concentrations in...",
         "Data Analytics, Web Development, and Retail Strategy.",
